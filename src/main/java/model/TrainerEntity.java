@@ -1,31 +1,48 @@
 package model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Table;
+import jakarta.validation.constraints.Email;
+
 import java.util.Objects;
 
 @Entity
-@Table(appliesTo = "trainer")
+@Table(name = "trainer", schema = "trainers")
 public class TrainerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "trainerId")
     private Integer trainerId;
-
-    @Column
+    @Basic
+    @Column(name = "name")
     private String name;
-
-    @Column
+    @Basic
+    @Column(name = "surname")
     private String surname;
-
-    @Column
+    @Basic
+    @Column(name = "email")
+    @Email
     private String email;
-
-    @Column
+    @Basic
+    @Column(name = "phone")
     private String phone;
+
+    public TrainerEntity() {
+    }
+
+    public TrainerEntity(String name, String surname, String email, String phone) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.phone = phone;
+    }
 
     public Integer getTrainerId() {
         return trainerId;
+    }
+
+    public void setTrainerId(int trainerId) {
+        this.trainerId = trainerId;
     }
 
     public void setTrainerId(Integer trainerId) {
@@ -61,16 +78,6 @@ public class TrainerEntity {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public TrainerEntity() {
-    }
-
-    public TrainerEntity(String name, String surname, String email, String phone) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
         this.phone = phone;
     }
 
