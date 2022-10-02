@@ -1,30 +1,29 @@
 package model;
 
+import jakarta.inject.Named;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
 @Entity
+@Named
 @Table(name = "trainer", schema = "trainers")
 public class TrainerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "trainerId")
     private Integer trainerId;
-    @Basic
-    @Column(name = "name")
+    @NotNull
     private String name;
-    @Basic
-    @Column(name = "surname")
+    @NotNull
     private String surname;
-    @Basic
-    @Column(name = "email")
-    @Email
+    @Email(message = "Wrong email format!")
+    @NotNull
     private String email;
-    @Basic
-    @Column(name = "phone")
+    @NotNull
     private String phone;
 
     public TrainerEntity() {

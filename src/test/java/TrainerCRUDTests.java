@@ -2,6 +2,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.constraints.AssertTrue;
+import jakarta.validation.constraints.Null;
 import model.TrainerEntity;
 import org.junit.Assert;
 import org.junit.Test;
@@ -27,9 +28,16 @@ public class TrainerCRUDTests {
     @Test
     @DisplayName("Email error")
         public void wrongTrainerEmailError() {
-        TrainerEntity trainerEntity = new TrainerEntity("michal", "probierz", "cracovia.pl", "+123");
+        Set<ConstraintViolation<TrainerEntity>> trainerViolations = validator.validateValue(TrainerEntity.class, "email", "einvalidEmail");
+        assertEquals(1, trainerViolations.size());
+    }
+
+    @Test
+    @DisplayName("Null errors")
+        public void nullTrainerFieldValues() {
+        TrainerEntity trainerEntity = new TrainerEntity();
         Set<ConstraintViolation<TrainerEntity>> trainerViolations = validator.validate(trainerEntity);
-        assertNotEquals(0, trainerViolations.size());
+        assertEquals(4, trainerViolations.size());
     }
 
 }
