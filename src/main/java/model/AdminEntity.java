@@ -2,6 +2,7 @@ package model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
@@ -29,6 +30,7 @@ public class AdminEntity {
 
     @Column
     @Basic
+    @NotBlank
     private String password;
 
     public AdminEntity() {

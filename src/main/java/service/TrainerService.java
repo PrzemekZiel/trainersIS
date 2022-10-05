@@ -1,7 +1,7 @@
 package service;
 
 import dao.TrainerDao;
-import dto.TrainerDto;
+import model.dto.TrainerDto;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import model.TrainerEntity;

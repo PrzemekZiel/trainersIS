@@ -6,6 +6,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import model.AdminEntity;
 
+import java.util.List;
+
 @RequestScoped
 public class AdminDao implements AdminDaoInterface<AdminEntity> {
 
@@ -13,9 +15,17 @@ public class AdminDao implements AdminDaoInterface<AdminEntity> {
     private EntityManager entityManager;
 
     @Override
-    public AdminEntity findAdminByEmail(String email) {
-        Query findAdminByEmail = entityManager.createQuery("SELECT a FROM AdminEntity a WHERE a.email like :emailToFind ");
-        findAdminByEmail.setParameter("emailToFind", email);
+    public AdminEntity findAdminByEmail(String emailToFind) {
+        Query findAdminByEmail = entityManager.createQuery("SELECT a FROM AdminEntity a WHERE a.email like :emailToFind ", AdminEntity.class);
+        findAdminByEmail.setParameter("emailToFind", emailToFind);
         return (AdminEntity) findAdminByEmail.getSingleResult();
     }
+
+    @Override
+    public List<AdminEntity> findAllAdmins() {
+        Query findAllAdmins = entityManager.createQuery("SELECT a FROM AdminEntity a");
+        return (List<AdminEntity>) findAllAdmins.getResultList();
+
+    }
+
 }

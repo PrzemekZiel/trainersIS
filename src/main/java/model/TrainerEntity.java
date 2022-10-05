@@ -40,10 +40,6 @@ public class TrainerEntity {
         return trainerId;
     }
 
-    public void setTrainerId(int trainerId) {
-        this.trainerId = trainerId;
-    }
-
     public void setTrainerId(Integer trainerId) {
         this.trainerId = trainerId;
     }
