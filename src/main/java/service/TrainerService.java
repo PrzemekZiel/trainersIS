@@ -6,6 +6,9 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import model.TrainerEntity;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequestScoped
 public class TrainerService {
 
@@ -36,6 +39,12 @@ public class TrainerService {
     public TrainerDto save(TrainerDto trainerDto) {
         TrainerEntity trainerEntity = trainerDao.save(dtoToTrainer(trainerDto));
         return trainerDto(trainerEntity);
-}
+    }
+
+public List<TrainerDto> findAllTrainers() {
+        return trainerDao.findAll().stream()
+                .map(TrainerService::trainerDto)
+                .collect(Collectors.toList());
+    }
 
 }

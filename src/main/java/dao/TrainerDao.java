@@ -4,6 +4,7 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 import model.TrainerEntity;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class TrainerDao implements TrainerDaoInterface<TrainerEntity> {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Override
+    @Transactional
     public TrainerEntity save(TrainerEntity trainerEntity) {
         entityManager.persist(trainerEntity);
         return trainerEntity;
