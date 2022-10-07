@@ -47,11 +47,14 @@
                 <td><c:out value="${trainer.phone}"/></td>
                 <td>
                     <div>
-                        <button>
-                            <form action="/delete" method="post">
-                                <input type="submit" value="${trainer.trainerId}">
-                            </form>
-                        </button>
+                        <form action="/delete" method="post">
+                            <input type="submit" title="delete" value="${trainer.trainerId}" name="trainerId">
+                        </form>
+                    </div>
+                    <div>
+                        <form action="/edit" method="post">
+                            <input type="submit" title="edit" value="${trainer.trainerId}" name="trainerId">
+                        </form>
                     </div>
                 </td>
             </tr>

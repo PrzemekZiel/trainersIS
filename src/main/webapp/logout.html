@@ -1,36 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Please Sign in</h1>
-            <div class="account-wall">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                <form class="form-signin">
-                    <input type="text" name="email" class="form-control" placeholder="Email" required autofocus>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                    <div>
-                        <a href="login.html">
-                            <button class="btn btn-lg btn-primary btn-block" type="button">
-                                Login
-                            </button>
-                        </a></div>
-                    <label class="checkbox pull-left">
-                        <input type="checkbox" value="remember-me">
-                        Remember me
-                    </label>
-                    <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
-                </form>
-            </div>
-            <div><a href="login.html" class="text-center new-account">Create an account </a>
-            </div>
-        </div>
+    <title>TrainersManagingSystem</title>
+</head>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
+    <a class="navbar-brand" href="index.html">Main Page</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCommands">
+        <ul class="navbar-nav pull-left">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownTrainerMenu" data-toggle="dropdown"
+                   role="button" aria-haspopup="true" aria-expanded="false">Trainer Menu<span class="caret"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownTrainerMenu">
+                    <a class="dropdown-item" href="base">List of trainers</a>
+                    <a class="dropdown-item" href="add-trainer">Add trainer</a>
+                </div>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" aria-current="page" href="/track">Tracking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/info">Info</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav pull-left">
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    Profile <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="login.html">Log in</a>
+                    <a class="dropdown-item" href="/logout">Log out</a>
+                </div>
+            </li>
+        </ul>
+
+        <form class="d-flex" method="get" action="search">
+            <input class="form-control me-2" type="text" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+
+    </div>
+
+</nav>
+
+<div class="card text-center">
+
+    <div class="card-header" style="margin-top: 100px">
+        <h2>InfoShare Trainer Managing System</h2>
+    </div>
+
+    <div class="form-group">
+        <h4>You are logged out.</h4>
+    </div>
+    <div>
+        <p style="text-align:center">You may log again by clicking <a href="/login">here.</a></p>
     </div>
 </div>
-</body>
-</html>

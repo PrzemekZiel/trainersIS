@@ -41,10 +41,22 @@ public class TrainerService {
         return trainerDto(trainerEntity);
     }
 
-public List<TrainerDto> findAllTrainers() {
+    public void delete(int trainerId) {
+        trainerDao.delete(trainerId);
+    }
+
+    public void update(TrainerEntity trainerEntity) {
+        trainerDao.update(trainerEntity);
+    }
+
+    public List<TrainerDto> findAllTrainers() {
         return trainerDao.findAll().stream()
                 .map(TrainerService::trainerDto)
                 .collect(Collectors.toList());
+    }
+
+    public TrainerEntity findById(int trainerId) {
+        return trainerDao.findById(trainerId);
     }
 
 }

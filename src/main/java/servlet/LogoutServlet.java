@@ -22,7 +22,7 @@ public class LogoutServlet extends HttpServlet {
                 resp.sendRedirect("/login.html");
             } else {
                 session.removeAttribute("admin");
-                System.out.println("log off");
+                resp.sendRedirect("/logout.html");
             }
         } catch (Exception e) {
             System.out.println("Exception during logout: " + Arrays.toString(e.getStackTrace()));

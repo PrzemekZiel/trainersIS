@@ -31,9 +31,9 @@ public class TrainerDao implements TrainerDaoInterface<TrainerEntity> {
         entityManager.flush();
     }
 
-    @Override
-    public void delete(int id) {
-        entityManager.remove(findById(id));
+    @Transactional
+    public void delete(int trainerId) {
+        entityManager.remove(findById(trainerId));
     }
 
     @Override
