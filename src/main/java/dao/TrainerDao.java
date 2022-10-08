@@ -21,7 +21,7 @@ public class TrainerDao implements TrainerDaoInterface<TrainerEntity> {
         return trainerEntity;
     }
 
-    @Override
+    @Transactional
     public void update(TrainerEntity trainerEntity) {
         TrainerEntity trainerEntity1 = findById(trainerEntity.getTrainerId());
         trainerEntity1.setName(trainerEntity.getName());

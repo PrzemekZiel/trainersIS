@@ -4,6 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>TrainersManagingSystem</title>
 </head>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -20,8 +21,8 @@
                    role="button" aria-haspopup="true" aria-expanded="false">Trainer Menu<span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownTrainerMenu">
-                    <a class="dropdown-item" href="/base">List of trainers</a>
-                    <a class="dropdown-item" href="add-trainer.html">Add trainer</a>
+                    <a class="dropdown-item" href="base">List of trainers</a>
+                    <a class="dropdown-item" href="add-trainer">Add trainer</a>
                 </div>
             </li>
             <li class="nav-item active">
@@ -53,75 +54,18 @@
 
 </nav>
 
-
 <div class="card text-center">
 
     <div class="card-header" style="margin-top: 100px">
-        <h1>InfoShare Trainer Managing System</h1>
-        <h5>Please enter data of new trainer</h5>
+        <h4>InfoShare Trainer Managing System</h4>
     </div>
 
-    <div class="all-classes-container">
-
-        <div class="row">
-            <style>
-                table, td, th
-                {
-                    border: 1px solid;
-                    alignment: center;
-                }
-            </style>
-            <div class="col-4">
-                <form method="post" action="/add-trainer">
-                    <table style="align-content: center">
-                        <tr>
-                            <td>
-                                Name:
-                            </td>
-                            <td>
-                                <label>
-                                    <input type="text" name="name">
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Surname:
-                            </td>
-                            <td>
-                                <label>
-                                    <input type="text" name="surname">
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Email:
-                            </td>
-                            <td>
-                                <label>
-                                    <input type="text" name="email"/>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Phone number:
-                            </td>
-                            <td>
-                                <label>
-                                    <input type="text" name="phone"/>
-                                </label>
-                            </td>
-                        </tr>
-                    </table>
-                    <input type="submit" name="save" value="save">
-                    <input type="reset" name="clear" value="clear"/><br/><br/>
-                </form>
-            </div>
-        </div>
+    <div class="form-group">
+        <h1>Trainer successfully updated.</h1>
     </div>
-
+    <div>
+        <p style="text-align:center">You may check the base by clicking <a href="/base">here</a> or go
+            back to the
+            <a href="index.html">main page</a>.</p>
+    </div>
 </div>
-
-
