@@ -19,7 +19,7 @@
                 </td>
                 <td>
                     <label>
-                        <input type="text" name="trainerId" value="${trainerToEdit.trainerId}">
+                        <input disabled type="text" name="trainerId" value="${trainerToEdit.trainerId}">
                     </label>
                 </td>
             </tr>
@@ -65,10 +65,13 @@
             </tr>
 
         </table>
-        <input type="submit" name="trainerId" value="${trainerToEdit.trainerId}">
 
-
-
+        <form class="d-flex" method="post" action="${pageContext.request.contextPath}/edit">
+            <label>
+                <input hidden name="trainerId" value="${trainer.trainerId}">
+            </label>
+            <button class="btn btn-outline-success" type="submit">Update</button>
+        </form>
 
 
     </form>

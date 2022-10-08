@@ -29,15 +29,15 @@
 </div>
 
 <body>
-<div class="table">
-    <h3>There are ${trainers.size()} trainers in our base.</h3>
+<h3>There are ${trainers.size()} trainers in our base.</h3>
+
+<div class="table table-striped">
     <table>
         <th>Id</th>
         <th>Name</th>
         <th>Surname</th>
         <th>Email</th>
         <th>Phone</th>
-        <th>Actions</th>
         <c:forEach var="trainer" items="${trainers}">
             <tr>
                 <td><c:out value="${trainer.trainerId}"/> </td>
@@ -46,20 +46,30 @@
                 <td><c:out value="${trainer.email}"/> </td>
                 <td><c:out value="${trainer.phone}"/></td>
                 <td>
-                    <div>
-                        <form action="/delete" method="post">
-                            <input type="submit" title="delete" value="${trainer.trainerId}" name="trainerId">
-                        </form>
-                    </div>
-                    <div>
-                        <form action="/edit" method="post">
-                            <input type="submit" title="edit" value="${trainer.trainerId}" name="trainerId">
-                        </form>
-                    </div>
+                    <form class="d-flex" method="post" action="${pageContext.request.contextPath}/delete">
+                        <label>
+                            <input hidden name="trainerId" value="${trainer.trainerId}" >
+                        </label>
+                        <button class="btn btn-outline-success" type="submit">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form class="d-flex" method="post" action="${pageContext.request.contextPath}/edit">
+                        <label>
+                            <input hidden name="trainerId" value="${trainer.trainerId}">
+                        </label>
+                        <button class="btn btn-outline-success" type="submit">Edit</button>
+                    </form>
                 </td>
             </tr>
         </c:forEach>
     </table>
 </div>
+
+<div>
+    <p style="text-align:center">You may add new trainer by clicking <a href="${pageContext.request.contextPath}/add-trainer">here</a> or go
+        back to the <a href="index.html">main page</a>.</p>
+</div>
+
 </body>
 </html>
