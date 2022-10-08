@@ -9,6 +9,8 @@ import model.TrainerEntity;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @RequestScoped
 public class TrainerService {
 
@@ -52,11 +54,17 @@ public class TrainerService {
     public List<TrainerDto> findAllTrainers() {
         return trainerDao.findAll().stream()
                 .map(TrainerService::trainerDto)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     public TrainerEntity findById(int trainerId) {
         return trainerDao.findById(trainerId);
+    }
+
+    public List<TrainerDto> findByText(String textToFind) {
+        return trainerDao.findByText(textToFind).stream()
+                .map(TrainerService::trainerDto)
+                .collect(toList());
     }
 
 }

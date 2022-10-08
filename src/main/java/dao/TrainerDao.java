@@ -49,8 +49,9 @@ public class TrainerDao implements TrainerDaoInterface<TrainerEntity> {
 
     @Override
     public List<TrainerEntity> findByText(String textToFind) {
-        Query findByText = entityManager.createQuery("SELECT t FROM TrainerEntity t WHERE t.name LIKE :textToFind " +
-                "OR t.surname LIKE :textToFind OR t.email LIKE :textToFind OR t.phone LIKE :textToFind");
+        Query findByText = entityManager.createQuery("SELECT t FROM TrainerEntity t WHERE (t.name LIKE :textToFind " +
+                "OR t.surname LIKE :textToFind OR t.email LIKE :textToFind OR t.phone LIKE :textToFind)", TrainerEntity.class);
+        findByText.setParameter("textToFind", "%" + textToFind + "%");
         return (List<TrainerEntity>) findByText.getResultList();
     }
 
