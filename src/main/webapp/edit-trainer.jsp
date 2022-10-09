@@ -19,7 +19,7 @@
                 </td>
                 <td>
                     <label>
-                        <input disabled type="text" name="trainerId" value="${trainerToEdit.trainerId}">
+                        <input type="text" name="trainerId" value="${trainerToEdit.trainerId}">
                     </label>
                 </td>
             </tr>

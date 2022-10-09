@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.dto.TrainerDto;
+import dto.TrainerDto;
 import service.TrainerService;
 
 import java.io.IOException;

@@ -3,6 +3,13 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
+
+<style>
+    {
+        flex: auto;
+    }
+</style>
+
 <div class="card text-center">
 
     <div class="card-header" style="margin-top: 100px">
@@ -13,7 +20,7 @@
 </div>
 <body>
 
-<h3>There are ${textToFind.size()} trainers matching your query in our base.</h3>
+<h3>There are ${textToFind.size()} trainer(s) matching your query in our base.</h3>
 
 <div>
     <table class="table table-striped">
@@ -21,6 +28,8 @@
     <th>Surname</th>
     <th>Email</th>
     <th>Phone</th>
+    <th></th>
+    <th></th>
     <c:forEach var="trainer" items="${textToFind}">
         <tr>
             <td><c:out value="${trainer.name}" /></td>
@@ -49,7 +58,7 @@
 </div>
 
 <div>
-    <p style="text-align:center">You may check the whole base by clicking <a href="/base">here</a> or go
+    <p style="text-align:center">You may check the whole base by clicking <a href="${pageContext.request.contextPath}/base">here</a> or go
         back to the <a href="index.html">main page</a>.</p>
 </div>
 

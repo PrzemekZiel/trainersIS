@@ -1,13 +1,14 @@
 package service;
 
 import dao.TrainerDao;
-import model.dto.TrainerDto;
+import dto.TrainerDto;
+import filter.LoginInterceptor;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
 import model.TrainerEntity;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -37,7 +38,7 @@ public class TrainerService {
 
         return trainerEntity;
     }
-
+    @Interceptors(LoginInterceptor.class)
     public TrainerDto save(TrainerDto trainerDto) {
         TrainerEntity trainerEntity = trainerDao.save(dtoToTrainer(trainerDto));
         return trainerDto(trainerEntity);

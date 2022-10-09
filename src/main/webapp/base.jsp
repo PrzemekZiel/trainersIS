@@ -12,11 +12,6 @@
 <html>
 
 <style>
-    table, th, td
-    {
-        border: 1px solid black;
-    }
-    div
     {
         flex: auto;
     }
@@ -29,7 +24,7 @@
 </div>
 
 <body>
-<h3>There are ${trainers.size()} trainers in our base.</h3>
+<h3>There are ${trainers.size()} trainer(s) in our base.</h3>
 
 <div class="table table-striped">
     <table>
@@ -38,6 +33,8 @@
         <th>Surname</th>
         <th>Email</th>
         <th>Phone</th>
+        <th></th>
+        <th></th>
         <c:forEach var="trainer" items="${trainers}">
             <tr>
                 <td><c:out value="${trainer.trainerId}"/> </td>
@@ -67,7 +64,7 @@
 </div>
 
 <div>
-    <p style="text-align:center">You may add new trainer by clicking <a href="${pageContext.request.contextPath}/add-trainer">here</a> or go
+    <p style="text-align:center">You may add new trainer by clicking <a href="${pageContext.request.contextPath}/add-trainer.html">here</a> or go
         back to the <a href="index.html">main page</a>.</p>
 </div>
 
