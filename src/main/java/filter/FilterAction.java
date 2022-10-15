@@ -2,17 +2,30 @@ package filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
-
-import java.io.FileWriter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter({"/edit", "/base", "/add-trainer", "/delete", "/search", "/logout"})
 public class FilterAction implements Filter {
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
 
-        System.out.println(req.getAttribute("admin") + " " + req.getRemoteAddr() + req.getServletContext().getContextPath());
+        HttpServletRequest req = (HttpServletRequest) request;
+
+        try {
+        HttpSession session = req.getSession();
+
+        if(session.getAttribute("admin") == null) {
+            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+            rd.forward(req, resp);
+            }
         filterChain.doFilter(req, resp);
+        } catch (Exception e) {
+            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+            rd.forward(req, resp);
+        }
+        }
+
     }
-}

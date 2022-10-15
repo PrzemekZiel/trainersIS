@@ -1,17 +1,22 @@
 package model;
 
+import filter.Auditable;
+import filter.PersistTrainerEntityListener;
 import jakarta.inject.Named;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.Objects;
 
 @Entity
 @Named
 @Table(name = "trainer", schema = "trainers")
-public class TrainerEntity {
+@XmlRootElement
+@EntityListeners(PersistTrainerEntityListener.class)
+public class TrainerEntity implements Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +30,7 @@ public class TrainerEntity {
     private String email;
     @NotNull
     private String phone;
+
 
     public TrainerEntity() {
     }

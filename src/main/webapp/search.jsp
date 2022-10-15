@@ -59,7 +59,7 @@
 
 <div>
     <p style="text-align:center">You may check the whole base by clicking <a href="${pageContext.request.contextPath}/base">here</a> or go
-        back to the <a href="index.html">main page</a>.</p>
+        back to the <a href="index.jsp">main page</a>.</p>
 </div>
 
 </body>

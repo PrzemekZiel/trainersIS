@@ -49,16 +49,16 @@ public class LoginServlet extends HttpServlet {
                     } else {
                     session.setAttribute("wrongPassword", "Wrong password for:" + adminService.findAdminByEmail(email).getEmail());
                     System.out.println(session.getAttribute("wrongPassword"));
-                    resp.sendRedirect("login.html");
+                    resp.sendRedirect("login.jsp");
                     }
             } else {
                 session.setAttribute("wrongEmail", "Wrong email for:" + email);
                 PrintWriter pw = resp.getWriter();
                 pw.println(session.getAttribute("wrongEmail")  + "nie admin");
-                resp.sendRedirect("login.html");
+                resp.sendRedirect("login.jsp");
             }
         } catch (Exception e) {
-            resp.sendRedirect("login.html");
+            resp.sendRedirect("login.jsp");
         }
     }
 }

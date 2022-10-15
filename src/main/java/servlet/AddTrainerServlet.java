@@ -1,6 +1,7 @@
 package servlet;
 
 import jakarta.inject.Inject;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +17,15 @@ public class AddTrainerServlet extends HttpServlet {
 
     @Inject
     TrainerService trainerService;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        RequestDispatcher rd = req.getRequestDispatcher("/add-trainer.jsp");
+        rd.forward(req, resp);
+
+    }
+
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {

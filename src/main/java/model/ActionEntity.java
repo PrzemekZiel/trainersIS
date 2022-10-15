@@ -38,6 +38,9 @@ public class ActionEntity {
     @NotNull
     private Date date;
 
+    @Column
+    private Integer trainerId;
+//TODO mapping, getters, setters, hash, equals, toString etc.
 
     public ActionEntity() {
 

@@ -1,5 +1,6 @@
 package model;
 
+import filter.LoggedAdmin;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,6 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "admin", schema = "trainers")
+@ExcludeDefaultListeners
 public class AdminEntity {
 
     @Id
@@ -90,5 +92,10 @@ public class AdminEntity {
 
     }
 
+@PostPersist
+    public void notifyAdmin() {
+        AdminEntity loggedAdmin = LoggedAdmin.INSTANCE.get();
+        //TODO create class for emails
+}
 
 }

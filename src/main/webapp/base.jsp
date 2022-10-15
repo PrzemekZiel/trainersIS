@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="navbar.html"%>
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" import="parsers.DateFormatters" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -20,6 +20,7 @@
 <div class="card text-center">
     <div class="card-header" style="margin-top: 100px">
         <h1>InfoShare Trainer Managing System</h1>
+        <h5> Now is ${DateFormatters.displayDate()}</h5>
     </div>
 </div>
 
@@ -64,8 +65,8 @@
 </div>
 
 <div>
-    <p style="text-align:center">You may add new trainer by clicking <a href="${pageContext.request.contextPath}/add-trainer.html">here</a> or go
-        back to the <a href="index.html">main page</a>.</p>
+    <p style="text-align:center">You may add new trainer by clicking <a href="${pageContext.request.contextPath}/add-trainer.jsp">here</a> or go
+        back to the <a href="index.jsp">main page</a>.</p>
 </div>
 
 </body>
