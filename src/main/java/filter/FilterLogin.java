@@ -4,28 +4,28 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import servlet.LoginServlet;
-import servlet.TrainerBaseLoadServlet;
-
 import java.io.IOException;
-import java.util.logging.Logger;
 
-@WebFilter("/base")
-public class FilterAction implements Filter {
-
-    Logger logger = Logger.getLogger(TrainerBaseLoadServlet.class.getName());
+@WebFilter({"/edit", "/base", "/add-trainer", "/delete", "/search", "/logout"})
+public class FilterLogin implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
+
+        try {
         HttpSession session = req.getSession();
 
-        String userIP = String.valueOf(session.getAttribute("userIP"));
-        String action = req.getServletContext().getServletContextName();
-        logger.info(userIP);
-        logger.info(action);
+        if(session.getAttribute("admin") == null) {
+            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+            rd.forward(req, resp);
+            }
         filterChain.doFilter(req, resp);
-    }
+        } catch (Exception e) {
+            RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
+            rd.forward(req, resp);
+        }
+        }
 
-}
+    }

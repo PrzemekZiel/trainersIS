@@ -1,6 +1,8 @@
 package servlet;
 
+import filter.LoginInterceptor;
 import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,15 +18,15 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-
+@Interceptors(LoginInterceptor.class)
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+
 
     @Inject
     AdminService adminService;
 
     private final Logger logger = LoggerFactory.getLogger(HttpSession.class);
-
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
@@ -43,22 +45,24 @@ public class LoginServlet extends HttpServlet {
 
                 if (loginData.equals(loginInDatabase)) {
                     session.setAttribute("admin", adminService.findAdminByEmail(email));
+                    session.setAttribute("userIP", req.getRemoteUser());
+                    session.setAttribute("adminEmail", adminService.findAdminByEmail(email).getEmail());
                     logger.info(session.getAttribute("admin") + " " + req.getRemoteAddr());
                     RequestDispatcher rd = req.getRequestDispatcher("/logged.jsp");
                     rd.forward(req, resp);
                     } else {
                     session.setAttribute("wrongPassword", "Wrong password for:" + adminService.findAdminByEmail(email).getEmail());
                     System.out.println(session.getAttribute("wrongPassword"));
-                    resp.sendRedirect("login.html");
+                    resp.sendRedirect("login.jsp");
                     }
             } else {
                 session.setAttribute("wrongEmail", "Wrong email for:" + email);
                 PrintWriter pw = resp.getWriter();
                 pw.println(session.getAttribute("wrongEmail")  + "nie admin");
-                resp.sendRedirect("login.html");
+                resp.sendRedirect("login.jsp");
             }
         } catch (Exception e) {
-            resp.sendRedirect("login.html");
+            resp.sendRedirect("login.jsp");
         }
     }
 }

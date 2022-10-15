@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Objects;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "action", schema = "trainers")
@@ -22,7 +20,6 @@ public class ActionEntity {
     @NotNull
     private String adminEmail;
 
-
     @Basic
     @Column(name = "userIP")
     private String userIP;
@@ -36,8 +33,11 @@ public class ActionEntity {
     @Basic
     @Column(name = "date")
     @NotNull
-    private Date date;
+    private LocalDateTime date;
 
+    @Column
+    private Integer trainerId;
+//TODO mapping, getters, setters, hash, equals, toString etc.
 
     public ActionEntity() {
 
@@ -86,42 +86,19 @@ public class ActionEntity {
         this.urlLink = urlLink;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public Integer getTrainerId() {
+        return trainerId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if(this == o) return true;
-        if(!(o instanceof ActionEntity)) return false;
-        ActionEntity that = (ActionEntity) o;
-        return Objects.equals(getActionId(), that.getActionId()) && Objects.equals(getAdminEmail(), that.getAdminEmail()) && Objects.equals(getUserIP(), that.getUserIP()) && Objects.equals(getActionType(), that.getActionType()) && Objects.equals(getUrlLink(), that.getUrlLink()) && Objects.equals(getDate(), that.getDate());
+    public void setTrainerId(Integer trainerId) {
+        this.trainerId = trainerId;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getActionId(), getAdminEmail(), getUserIP(), getActionType(), getUrlLink(), getDate());
-    }
-
-    @Override
-    public String toString() {
-        return "ActionEntity{" +
-                "actionId=" + actionId +
-                ", adminEmail='" + adminEmail + '\'' +
-                ", userIP='" + userIP + '\'' +
-                ", actionType=" + actionType +
-                ", urlLink='" + urlLink + '\'' +
-                ", date=" + date +
-                '}';
-    }
-
-
 }
