@@ -43,6 +43,15 @@ public class AddTrainerServlet extends HttpServlet {
     }
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        RequestDispatcher rd = req.getRequestDispatcher("/add-trainer.jsp");
+        rd.forward(req, resp);
+
+    }
+
+
+    @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         String name = req.getParameter("name");
