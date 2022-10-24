@@ -1,5 +1,6 @@
 package servlet;
 
+import dao.ActionDao;
 import filter.LoginInterceptor;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -11,11 +12,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.ActionEntity;
+import model.ActionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import service.AdminService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +31,9 @@ public class LoginServlet extends HttpServlet {
 
     @Inject
     AdminService adminService;
+
+    @Inject
+    ActionDao actionDao;
 
     private final Logger logger = LoggerFactory.getLogger(HttpSession.class);
 
@@ -49,6 +56,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("admin", adminService.findAdminByEmail(email));
                     session.setAttribute("userIP", req.getRemoteAddr());
                     session.setAttribute("adminEmail", adminService.findAdminByEmail(email).getEmail());
+                    actionDao.save(createAction(req.getSession(true).getAttribute("adminEmail").toString(), req.getSession(true).getAttribute("userIP").toString(), ActionType.LOGIN, "NA - LOGIN", LocalDateTime.now()));
                     logger.info(session.getAttribute("admin") + " " + req.getRemoteAddr());
                     RequestDispatcher rd = req.getRequestDispatcher("/logged.jsp");
                     rd.forward(req, resp);
@@ -67,4 +75,16 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("login.jsp");
         }
     }
+
+    public static ActionEntity createAction (String adminEmail, String userIP, ActionType actionType, String urlLink, LocalDateTime date) {
+        ActionEntity actionEntity = new ActionEntity();
+        actionEntity.setAdminEmail(adminEmail);
+        actionEntity.setUserIP(userIP);
+        actionEntity.setActionType(actionType);
+        actionEntity.setUrlLink(urlLink);
+        actionEntity.setDate(date);
+
+        return actionEntity;
+    }
+
 }

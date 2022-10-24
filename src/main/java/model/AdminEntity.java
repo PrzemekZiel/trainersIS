@@ -1,6 +1,5 @@
 package model;
 
-import filter.LoggedAdmin;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -91,11 +90,5 @@ public class AdminEntity {
         return Objects.hash(getAdminId(), getName(), getSurname(), getEmail(), getPassword());
 
     }
-
-@PostPersist
-    public void notifyAdmin() {
-        AdminEntity loggedAdmin = LoggedAdmin.INSTANCE.get();
-        //TODO create class for emails
-}
 
 }

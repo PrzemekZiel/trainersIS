@@ -30,7 +30,7 @@ public class SearchServlet extends HttpServlet {
         req.setAttribute("textToFind", trainerService.findByText(textToFind));
         List searchResults = (List) req.getAttribute("textToFind");
         req.setAttribute("textToFind", searchResults);
-        actionDao.save(createAction(req.getSession(true).getAttribute("adminEmail").toString(), req.getSession(true).getAttribute("userIP").toString(), ActionType.SEARCH, "Text to find: " +textToFind, LocalDateTime.now()));
+        actionDao.save(createAction(req.getSession(true).getAttribute("adminEmail").toString(), req.getSession(true).getAttribute("userIP").toString(), ActionType.SEARCH, "NA - Text to find: " +textToFind, LocalDateTime.now()));
 
         System.out.println(searchResults);
         RequestDispatcher rd = req.getRequestDispatcher("/search.jsp");
