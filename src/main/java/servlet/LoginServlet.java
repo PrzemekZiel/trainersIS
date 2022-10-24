@@ -1,6 +1,7 @@
 package servlet;
 
 import filter.LoginInterceptor;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.interceptor.Interceptors;
 import jakarta.servlet.RequestDispatcher;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 @Interceptors(LoginInterceptor.class)
 @WebServlet("/login")
+@ApplicationScoped
 public class LoginServlet extends HttpServlet {
 
 
@@ -45,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 
                 if (loginData.equals(loginInDatabase)) {
                     session.setAttribute("admin", adminService.findAdminByEmail(email));
-                    session.setAttribute("userIP", req.getRemoteUser());
+                    session.setAttribute("userIP", req.getRemoteAddr());
                     session.setAttribute("adminEmail", adminService.findAdminByEmail(email).getEmail());
                     logger.info(session.getAttribute("admin") + " " + req.getRemoteAddr());
                     RequestDispatcher rd = req.getRequestDispatcher("/logged.jsp");

@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @WebServlet("/add-trainer")
 public class AddTrainerServlet extends HttpServlet {
@@ -30,17 +32,6 @@ public class AddTrainerServlet extends HttpServlet {
 
     @Inject
     ActionDao actionDao;
-
-    @Inject
-    AdminService adminService;
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        RequestDispatcher rd = req.getRequestDispatcher("/add-trainer.jsp");
-        rd.forward(req, resp);
-
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -60,7 +51,7 @@ public class AddTrainerServlet extends HttpServlet {
         String phone = req.getParameter("phone");
 
         trainerService.save(createDtoTrainer(name, surname, email, phone));
-        actionDao.save(createAction("lk@kk", req.getRemoteUser(), ActionType.ADD, trainerService.findByText(email).stream().findFirst().toString(), LocalDateTime.now()));
+        actionDao.save(createAction(req.getSession(true).getAttribute("adminEmail").toString(), req.getSession(true).getAttribute("userIP").toString(), ActionType.ADD, trainerService.findByEmail(email).stream().reduce((first, second) -> second).map(TrainerDto::getTrainerId).map(Objects::toString).orElse(null), LocalDateTime.now()));
         resp.sendRedirect("/new-trainer-added.html");
 
     }

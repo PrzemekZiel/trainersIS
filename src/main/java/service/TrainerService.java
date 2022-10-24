@@ -68,4 +68,14 @@ public class TrainerService {
                 .collect(toList());
     }
 
+    public List<TrainerDto> findByEmail(String emailToFind) {
+        return trainerDao.findByEmail(emailToFind).stream()
+                .map(TrainerService::trainerDto)
+                .collect(toList());
+    }
+
+    public boolean istrainer(Integer trainerId) {
+        return trainerDao.findById(trainerId) != null;
+    }
+
 }

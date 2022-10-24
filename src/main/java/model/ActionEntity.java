@@ -35,12 +35,7 @@ public class ActionEntity {
     @NotNull
     private LocalDateTime date;
 
-    @Column
-    private Integer trainerId;
-//TODO mapping, getters, setters, hash, equals, toString etc.
-
     public ActionEntity() {
-
     }
 
     public Integer getActionId() {
@@ -94,11 +89,4 @@ public class ActionEntity {
         this.date = date;
     }
 
-    public Integer getTrainerId() {
-        return trainerId;
-    }
-
-    public void setTrainerId(Integer trainerId) {
-        this.trainerId = trainerId;
-    }
 }

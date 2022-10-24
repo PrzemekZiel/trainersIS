@@ -56,7 +56,14 @@ public class TrainerDao implements TrainerDaoInterface<TrainerEntity> {
     }
 
     @Override
-    public TrainerEntity findByEmail(String emailToFind) {
-        return (TrainerEntity) entityManager.createQuery("SELECT t FROM TrainerEntity t WHERE t.email LIKE :emailToFind").getSingleResult();
+    public List<TrainerEntity> findByEmail(String emailToFind) {
+        Query findByEmail = entityManager.createQuery("SELECT t FROM TrainerEntity t WHERE t.email LIKE :emailToFind", TrainerEntity.class);
+        findByEmail.setParameter("emailToFind" , emailToFind);
+        return (List<TrainerEntity>) findByEmail.getResultList();
     }
+
+    public TrainerEntity findByEmailId(String emailToFindId) {
+        return entityManager.find(TrainerEntity.class, emailToFindId);
+    }
+
 }

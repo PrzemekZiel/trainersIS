@@ -16,6 +16,10 @@ List<T> findAll();
 
 List<T> findByText(String text);
 
-T findByEmail(String text);
+List<T> findByEmail(String text);
 
+T findByEmailId(String text);
 }
+
+//TODO findByEmail returning Id
+

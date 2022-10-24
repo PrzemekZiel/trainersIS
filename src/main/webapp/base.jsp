@@ -29,6 +29,7 @@
 
 <div class="table table-striped">
     <table>
+        <th>Numbers</th>
         <th>Id</th>
         <th>Name</th>
         <th>Surname</th>
@@ -36,8 +37,9 @@
         <th>Phone</th>
         <th></th>
         <th></th>
-        <c:forEach var="trainer" items="${trainers}">
+        <c:forEach var="trainer" items="${trainers}" varStatus="loop">
             <tr>
+                <td><c:out value="${loop.count}"/></td>
                 <td><c:out value="${trainer.trainerId}"/> </td>
                 <td><c:out value="${trainer.name}"/> </td>
                 <td><c:out value="${trainer.surname}"/> </td>
