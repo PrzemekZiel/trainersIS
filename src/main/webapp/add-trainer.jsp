@@ -33,7 +33,7 @@
         <div class="form-group row" align="left" style="margin: 10px">
             <label for="inputPhone" class="col-sm-2 col-form-label">Phone</label>
             <div class="col-sm-4">
-                <input type="tel" class="form-control" id="inputPhone" name="phone" placeholder="Phone number">
+                <input type="tel" class="form-control" id="inputPhone" name="phone" placeholder="Enter phone number">
             </div>
         </div>
         <div class="col-sm-6 col-form-label">

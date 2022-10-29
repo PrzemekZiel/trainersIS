@@ -29,3 +29,5 @@ public class AdminDao implements AdminDaoInterface<AdminEntity> {
     }
 
 }
+
+//TODO generify list

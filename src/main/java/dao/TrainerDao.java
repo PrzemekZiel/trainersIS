@@ -67,3 +67,5 @@ public class TrainerDao implements TrainerDaoInterface<TrainerEntity> {
     }
 
 }
+
+//TODO generify lists

@@ -49,5 +49,7 @@ public class SearchServlet extends HttpServlet {
         return actionEntity;
     }
 
-
 }
+
+//TODO pagination
+//TODO column resizing to content

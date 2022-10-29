@@ -51,5 +51,8 @@ public class EditServlet extends HttpServlet {
         return actionEntity;
     }
 
-
 }
+
+//TODO confirming update
+//TODO back navigation
+//TODO id inactive

@@ -47,3 +47,5 @@ public class TrainerBaseLoadServlet extends HttpServlet {
     }
 
 }
+
+//TODO pagination in view

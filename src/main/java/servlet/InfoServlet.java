@@ -7,3 +7,6 @@ import jakarta.servlet.http.HttpServlet;
 public class InfoServlet extends HttpServlet {
 
 }
+
+
+//TODO statistics:

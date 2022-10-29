@@ -33,3 +33,6 @@ public class ActionDao implements ActionDaoInterface<ActionEntity> {
 
 
 }
+
+//TODO generify classes
+//TODO query group
