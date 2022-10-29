@@ -3,6 +3,7 @@ package servlet;
 import dao.ActionDao;
 import filter.LoginInterceptor;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.interceptor.Interceptors;
 import jakarta.servlet.RequestDispatcher;
