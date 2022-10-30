@@ -30,7 +30,6 @@ public class DeleteTrainerServlet extends HttpServlet {
         resp.sendRedirect("/trainer-deleted.html");
     }
 
-
     public static ActionEntity createAction (String adminEmail, String userIP, ActionType actionType, String urlLink, LocalDateTime date) {
         ActionEntity actionEntity = new ActionEntity();
         actionEntity.setAdminEmail(adminEmail);

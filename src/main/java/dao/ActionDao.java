@@ -35,4 +35,4 @@ public class ActionDao implements ActionDaoInterface<ActionEntity> {
 }
 
 //TODO generify classes
-//TODO query group
+//TODO query group = sql instead of streams

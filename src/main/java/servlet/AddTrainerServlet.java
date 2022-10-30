@@ -1,7 +1,6 @@
 package servlet;
 
 import dao.ActionDao;
-import dao.AdminDao;
 import jakarta.inject.Inject;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,19 +9,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import dto.TrainerDto;
-import jakarta.servlet.http.HttpSession;
 import model.ActionEntity;
 import model.ActionType;
-import parsers.DateFormatters;
-import service.AdminService;
 import service.TrainerService;
-
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @WebServlet("/add-trainer")
 public class AddTrainerServlet extends HttpServlet {
@@ -40,7 +32,6 @@ public class AddTrainerServlet extends HttpServlet {
         rd.forward(req, resp);
 
     }
-
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {

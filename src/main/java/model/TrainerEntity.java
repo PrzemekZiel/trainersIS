@@ -2,8 +2,7 @@ package model;
 
 import jakarta.inject.Named;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.Objects;
@@ -25,8 +24,8 @@ public class TrainerEntity {
     @NotNull
     private String email;
     @NotNull
+    @Digits(integer = 9, fraction = 0, message = "Only number are allowed")
     private String phone;
-
 
     public TrainerEntity() {
     }

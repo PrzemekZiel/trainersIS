@@ -3,7 +3,6 @@ package servlet;
 import dao.ActionDao;
 import filter.LoginInterceptor;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.interceptor.Interceptors;
 import jakarta.servlet.RequestDispatcher;
@@ -58,7 +57,6 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("userIP", req.getRemoteAddr());
                     session.setAttribute("adminEmail", adminService.findAdminByEmail(email).getEmail());
                     actionDao.save(createAction(req.getSession(true).getAttribute("adminEmail").toString(), req.getSession(true).getAttribute("userIP").toString(), ActionType.LOGIN, "NA - LOGIN", LocalDateTime.now()));
-                    logger.info(session.getAttribute("admin") + " " + req.getRemoteAddr());
                     RequestDispatcher rd = req.getRequestDispatcher("/logged.jsp");
                     rd.forward(req, resp);
                     } else {
@@ -92,3 +90,4 @@ public class LoginServlet extends HttpServlet {
 
 //TODO tests
 //TODO exceptions
+//TODO interceptor for logging to a text file unsuccessful logging, removing wrong password or no admin

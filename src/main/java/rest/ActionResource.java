@@ -10,7 +10,6 @@ import jakarta.ws.rs.core.GenericEntity;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import model.ActionEntity;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +33,7 @@ public class ActionResource implements Serializable {
     @Path("{numberOfLast:[0-9]+}")
     @Produces(MediaType.APPLICATION_JSON)
         public Response getLastActions(final @PathParam("numberOfLast") String numberofLast) {
-        List<ActionEntity> actions = actionDao.findAllActions().stream().unordered().limit(Integer.parseInt(numberofLast)).collect(Collectors.toList());
+        List<ActionEntity> actions = actionDao.findAllActions().stream().skip(actionDao.findAllActions().size() - Integer.parseInt(numberofLast)).collect(Collectors.toList());
         GenericEntity<List<ActionEntity>> actionWrapper = new GenericEntity<>(actions) {
         };
         return Response.ok(actionWrapper).build();
