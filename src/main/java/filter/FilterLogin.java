@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter({"/edit", "/base", "/add-trainer", "/delete", "/search", "/logout", "/actions"})
+@WebFilter({"/edit", "/base", "/add-trainer", "/delete", "/search", "/logout", "/actions", })
 public class FilterLogin implements Filter {
 
     @Override

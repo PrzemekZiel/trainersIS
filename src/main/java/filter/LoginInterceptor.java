@@ -2,9 +2,7 @@ package filter;
 
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.InvocationContext;
-import jakarta.servlet.http.HttpSession;
-import model.AdminEntity;
-import servlet.LoginServlet;
+
 
 import java.util.Arrays;
 import java.util.logging.Logger;
@@ -24,3 +22,5 @@ public class LoginInterceptor {
     }
 
 }
+
+//Append to file

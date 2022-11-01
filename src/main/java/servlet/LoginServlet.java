@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import service.AdminService;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,11 +38,11 @@ public class LoginServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
-        String email = req.getParameter("email");
-        String password = req.getParameter("password");
+
 
         try {
-
+            String email = req.getParameter("email");
+            String password = req.getParameter("password");
             HttpSession session = req.getSession();
             Map<String, String> loginData = new HashMap<>();
             loginData.put(email, password);
@@ -64,13 +63,9 @@ public class LoginServlet extends HttpServlet {
                     System.out.println(session.getAttribute("wrongPassword"));
                     resp.sendRedirect("login.jsp");
                     }
-            } else {
-                session.setAttribute("wrongEmail", "Wrong email for:" + email);
-                PrintWriter pw = resp.getWriter();
-                pw.println(session.getAttribute("wrongEmail")  + "nie admin");
-                resp.sendRedirect("login.jsp");
             }
         } catch (Exception e) {
+
             resp.sendRedirect("login.jsp");
         }
     }

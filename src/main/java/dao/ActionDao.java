@@ -7,8 +7,6 @@ import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import model.ActionEntity;
 import query.ActionCount;
-
-import java.util.Arrays;
 import java.util.List;
 
 @RequestScoped
@@ -29,13 +27,10 @@ public class ActionDao implements ActionDaoInterface<ActionEntity> {
     }
 
     public List<ActionCount[]> groupActions() {
-        Query groupActions = entityManager.createQuery("SELECT a.actionType, count(a) FROM ActionEntity a GROUP BY a.actionType");
+        Query groupActions = entityManager.createQuery("SELECT a.actionType, count(a) FROM ActionEntity a GROUP BY a.actionType ORDER BY count(a) DESC");
         return (List<ActionCount[]>) groupActions.getResultList();
-        //results.forEach(g -> System.out.println(Arrays.toString(g)));
     }
-
 
 }
 
-//TODO generify classes
-//TODO query group = sql instead of streams
+//TODO generify classes?
